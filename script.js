@@ -1,6 +1,7 @@
 // category list show 
 const url = `https://openapi.programming-hero.com/api/categories`;
 const classList = document.getElementById('categoryList');
+let allPlants = [];
 fetch(url)
     .then(res => res.json())
     .then(data => {
@@ -8,14 +9,26 @@ fetch(url)
         categories.forEach(category => {
             const li = document.createElement('li');
             li.innerHTML = `
-        <button class="w-full text-left px-4 py-2 rounded-md hover:bg-[#16a34a] hover:text-white transition-colors">
+        <button data-category="${category.category_name}" class="w-full text-left px-4 py-2 rounded-md hover:bg-[#16a34a] hover:text-white transition-colors">
             ${category.category_name}
           </button>
         `;
             classList.appendChild(li);
         });
+        classList.querySelectorAll("button").forEach(btn=>{
+           btn.addEventListener('click', ()=>{
+            const dataCategory = btn.getAttribute("data-category");
+            if (dataCategory === "All") {
+                displayPlants(allPlants);
+            }else{
+                const filterPlant = allPlants.filter(data => data.category == dataCategory)
+                displayPlants(filterPlant)
+            }
+           })
+         })
     })
 
+ 
 // plants part 
 
 const plantUrl = `https://openapi.programming-hero.com/api/plants`;
@@ -23,7 +36,11 @@ const plantList = document.getElementById('plantList');
 fetch(plantUrl)
     .then(res => res.json())
     .then(data => {
-        const plants = data.plants;
+        allPlants = data.plants;
+        displayPlants(allPlants)
+    })
+    function displayPlants(plants) {
+        plantList.innerHTML = "";
         plants.forEach(plant => {
             const div = document.createElement('div');
             div.classList.add("card", "bg-base-100", "shadow-sm")
@@ -49,4 +66,4 @@ fetch(plantUrl)
             plantList.appendChild(div);
 
         })
-    })
+    }
