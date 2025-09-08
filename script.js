@@ -16,8 +16,17 @@ fetch(url)
             classList.appendChild(li);
         });
         classList.querySelectorAll("button").forEach(btn=>{
-           btn.addEventListener('click', ()=>{
+           btn.addEventListener('click', (e)=>{
             const dataCategory = btn.getAttribute("data-category");
+
+            // active button 
+            if(e.target.tagName === "BUTTON"){
+             classList.querySelectorAll("button").forEach(btn =>{
+                btn.classList.remove("bg-[#16a34a]", "text-white")
+             })
+            }
+            btn.classList.add("bg-[#16a34a]", "text-white")
+
             if (dataCategory === "All") {
                 displayPlants(allPlants);
             }else{
