@@ -66,6 +66,10 @@
 
   <section class="text-center py-10">
     <h2 class="text-4xl font-bold">Choose Your Trees</h2>
+    <div id="spinner" class="hidden">
+      <span class="loading loading-bars loading-xl"></span>
+
+    </div>
 
   </section>
   <!-- tree section start -->
@@ -81,26 +85,7 @@
 
     <!-- Middle grid of cards -->
     <div id="plantList" class="grid grid-cols-1 gap-4 flex-1 md:grid-cols-3">
-      <!-- your cards (can be 9, 12, 20... doesn’t matter) -->
-      <!-- card repeated -->
-      <!-- <div class="card bg-base-100 shadow-sm">
-        <figure class="px-6 pt-6">
-          <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Tree"
-            class="rounded-xl" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Mango Tree</h2>
-          <p>A fast-growing tropical tree that produces delicious, juicy mangoes during summer.</p>
-          <div class="flex justify-between w-full">
-            <button class="bg-[#DCFCE7] px-2 py-1 rounded-full">Fruit Tree</button>
-            <p class="mr-3 text-right">$500</p>
-          </div>
-
-          <div class="card-actions">
-            <button class="btn w-full rounded-full bg-[#15803d]">Add to Cart</button>
-          </div>
-        </div>
-      </div> -->
+     
      
     </div>
 
@@ -108,23 +93,12 @@
     <div class="w-96">
       <div class="card bg-base-100 h-full shadow-sm gap-3">
         <h2 class="card-title ml-10 mt-5">Your Cart</h2>
-        <div class="flex justify-between items-center mx-10 bg-[#F0FDF4] p-2 rounded-md space-y-2">
-          <div class="">
-            <h2>Mange Tree</h2>
-            <p>$500 X 1</p>
-          </div>
-          <div>
-            <h2>X</h2>
-          </div>
-        </div>
-        <div class="flex justify-between items-center mx-10 bg-[#F0FDF4] p-2 rounded-md space-y-2">
-          <div class="">
-            <h2>Mange Tree</h2>
-            <p>$500 X 1</p>
-          </div>
-          <div>
-            <h2>X</h2>
-          </div>
+        
+         <div id="addCard">
+
+         </div>
+        <div>
+          <h3 class="text-3xl font-bold text-center">Total : <span id="totalPrice">0</span></h3>
         </div>
 
       </div>
@@ -198,7 +172,17 @@
     </div>
   </div>
 </section>
-
+<!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="detailContainer" class="card bg-base-100 shadow-sm">
+      
+      </div>
+    </div>
+    
+  </div>
+</dialog>
 <!-- footer copy -->
 
 <section class="bg-[#14532D] py-5">
